@@ -11,6 +11,7 @@ class RequestSampleController extends Controller
         return view('form');
     }
 
+    // クエリパラメータを取得
     public function queryStrings(Request $request)
     {
         // $keyword = $request->input('keyword');
@@ -24,4 +25,23 @@ class RequestSampleController extends Controller
 
         return 'キーワードは「' . $keyword . '」です';
     }
+
+
+    // ルートパラメータ
+    public function profile($id)
+    {
+        return 'IDは「' . $id . '」です';
+    }
+
+    // ルートパラメータ（複数）
+    public function productsArchive(Request $request, $category, $year)
+    {
+        return 'カテゴリーは「' . $category . '」、年は「' . $year . '」'. $request->get('page', 1) . 'ページ目です';
+    }
+
+    // public function routeLink()
+    // {
+    //     $url = route('profile');
+    //     return 'プロフィールページのURLは' . $url . 'です';
+    // }
 }
