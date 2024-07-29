@@ -12,16 +12,23 @@ class RequestSampleController extends Controller
     }
 
     // クエリパラメータを取得
+    // Requestと型指定すると、自動的に、その引数はFormからうけった情報を取得する
     public function queryStrings(Request $request)
     {
-        // $keyword = $request->input('keyword');
-        // $keyword = 'キーワードが指定されていません';
+        // このkeywordは、htmlで書いたname属性の値
+        // $keyword = $request->keyword;
+
+        // またallメソッドを使用することで、すべての情報を配列で取得できる
+        // $keyword = $request->all();
+
+        // 初期値を設定（hasメソッド）
+        // $keyword = '未設定';
         // if ($request->has('keyword')) {
         //     $keyword = $request->keyword;
         // }
 
-        // 上記と同じ
-        $keyword = $request->get('keyword', 'キーワードが指定されていません');
+        // 上記と同じ（getメソッド）
+        $keyword = $request->get('keyword', '未設定');
 
         return 'キーワードは「' . $keyword . '」です';
     }
@@ -36,7 +43,7 @@ class RequestSampleController extends Controller
     // ルートパラメータ（複数）
     public function productsArchive(Request $request, $category, $year)
     {
-        return 'カテゴリーは「' . $category . '」、年は「' . $year . '」'. $request->get('page', 1) . 'ページ目です';
+        return 'カテゴリーは「' . $category . '」、年は「' . $year . '」' . $request->get('page', 1) . 'ページ目です';
     }
 
     // public function routeLink()
