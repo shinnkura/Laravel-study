@@ -14,6 +14,8 @@ class HiLowController extends Controller
         // セッションに保存
         //////////////////////////////
         // 複数のページをまたいで、データの受け渡しができる
+        // セッションによるデータの保存期間は、ブラウザを閉じるまで、
+        // または、２時間（？）経過するまで
 
         // セッションに保存
         session(['dealersNumber' => $dealersNumber]);
