@@ -57,4 +57,16 @@ class RequestSampleController extends Controller
     //     $url = route('profile');
     //     return 'プロフィールページのURLは' . $url . 'です';
     // }
+
+
+    /////////////////////////////
+    // 名前付きルート
+    /////////////////////////////
+    public function routeLink()
+    {
+        // ルートパラメータを指定する場合は、第二引数に連想配列で指定する
+        // 存在しないルートパラメータを指定すると、クエリパラーメータとして扱われる
+        $url = route('profile', ['id' => 123, 'name' => 'taro']);
+        return 'プロフィールページのURLは' . $url . 'です';
+    }
 }
