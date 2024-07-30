@@ -11,7 +11,9 @@ class RequestSampleController extends Controller
         return view('form');
     }
 
+    /////////////////////////////
     // クエリパラメータを取得
+    /////////////////////////////
     // Requestと型指定すると、自動的に、その引数はFormからうけった情報を取得する
     public function queryStrings(Request $request)
     {
@@ -34,13 +36,17 @@ class RequestSampleController extends Controller
     }
 
 
+    /////////////////////////////
     // ルートパラメータ
+    /////////////////////////////
     public function profile($id)
     {
         return 'IDは「' . $id . '」です';
     }
 
     // ルートパラメータ（複数）
+    // ルートパラメータを指定した順番で、引数を設定できる
+    // ただ、Requestと併用する場合は、Requestを最初に指定する
     public function productsArchive(Request $request, $category, $year)
     {
         return 'カテゴリーは「' . $category . '」、年は「' . $year . '」' . $request->get('page', 1) . 'ページ目です';

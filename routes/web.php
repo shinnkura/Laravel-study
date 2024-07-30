@@ -27,7 +27,11 @@ Route::get('/monty-hall', [GameController::class, 'montyHall']);
 Route::get('/form', [RequestSampleController::class, 'form']);
 Route::get('/query-strings', [RequestSampleController::class, 'queryStrings']);
 
+// ルートパラメータ
+// クエリパラメーターではなく、
+// URLのパスの一部を、送信データとみなす機能
 Route::get('/users/{id}', [RequestSampleController::class, 'profile'])->name('profile');
+// 一つのURLに複数のパラメータを設定する
 Route::get('/products/{category}/{year}', [RequestSampleController::class, 'productsArchive']);
 
 // Route::get('/route-link', [RequestSampleController::class, 'routeLink']);
