@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Psy\Command\ListCommand\FunctionEnumerator;
 
 class RequestSampleController extends Controller
 {
@@ -68,5 +69,23 @@ class RequestSampleController extends Controller
         // 存在しないルートパラメータを指定すると、クエリパラーメータとして扱われる
         $url = route('profile', ['id' => 123, 'name' => 'taro']);
         return 'プロフィールページのURLは' . $url . 'です';
+    }
+
+    /////////////////////////////
+    // フォームとHTTPリクエストメソッド
+    /////////////////////////////
+
+    public function loginForm()
+    {
+        return view('login');
+    }
+
+    public function login(Request $request)
+    {
+        if ($request->get('email') === 'user@exaple.com' && $request->get('password') === 'password') {
+            return 'ログイン成功';
+        }
+
+        return 'ログイン失敗';
     }
 }
