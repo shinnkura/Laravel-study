@@ -53,6 +53,7 @@ class PhotoController extends Controller
     public function destroy(string $fileName)
     {
         // ファイルの削除
+        // Storageファサードのdiskメソッドで、ディスクを指定
         Storage::disk('public')->delete('photos/' . $fileName);
         return to_route('photos.create')->with('success', '削除完了');
     }
